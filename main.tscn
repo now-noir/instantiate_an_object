@@ -21,6 +21,15 @@ func _on_button_button_down():
 	enemy_scene_instance.position = Vector2(1152/2, 648/2)
 	
 	add_child(enemy_scene_instance)
+
+
+func _on_button_button_up():
+	var enemy_scene_instance : Node2D = enemy_scene.instantiate()
+	
+	#we spawn the enemy at the center of the screen, the spawn position will be later offset by the enemy's ready fuction.
+	enemy_scene_instance.position = Vector2(1152/2, 648/2)
+	
+	add_child(enemy_scene_instance)
 "
 
 [node name="Main" type="Node2D"]
@@ -32,4 +41,12 @@ offset_right = 164.0
 offset_bottom = 57.0
 text = "spawn enemy"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 132.0
+offset_top = 186.0
+offset_right = 233.0
+offset_bottom = 212.0
+text = "I AM A LABEL"
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
